@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.container {
+  @apply mx-auto w-[90%];
+}
+
+.trans-300 {
+  @apply hover:transition ease-in-out duration-300;
+}
+
+.btn-primary {
+  @apply rounded-lg bg-white hover:bg-yellow-600;
+}
+.btn-secondary {
+  @apply rounded-lg bg-primary hover:bg-yellow-600;
+}
+.btn-navbar {
+  @apply rounded-lg hover:bg-yellow-600/30 trans-300;
+}
+
+.btn-white {
+  @apply rounded-lg bg-white hover:bg-yellow-600 hover:text-white uppercase trans-300;
+}
+
+.title {
+  @apply text-center font-prociono text-2xl mb-2;
+}
+.title-border {
+  @apply border-b-2 border-primary w-16 text-transparent;
+}
