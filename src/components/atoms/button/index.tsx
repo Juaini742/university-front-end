@@ -4,10 +4,11 @@ type ButtonType = {
   variant?: "primary" | "secondary" | "white" | "navbar";
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   type?: "button" | "submit" | "reset";
+  disabled?: boolean;
 };
 
 export const Button = (props: ButtonType) => {
-  const {className, children, type, variant, onClick} = props;
+  const {className, disabled, children, type, variant, onClick} = props;
 
   let buttonStyle = "";
 
@@ -31,6 +32,7 @@ export const Button = (props: ButtonType) => {
   return (
     <button
       type={type}
+      disabled={disabled}
       onClick={onClick}
       className={`${buttonStyle} ${className}`}
     >

@@ -56,9 +56,11 @@ export const Navbar = () => {
               <Button variant="navbar" className="py-2 px-2 uppercase">
                 Login
               </Button>
-              <Button variant="white" className="px-2 py-2">
-                Register
-              </Button>
+              <Link to="/register">
+                <Button variant="white" className="px-2 py-2">
+                  Register
+                </Button>
+              </Link>
             </div>
           </div>
           <div className="flex md:hidden">
