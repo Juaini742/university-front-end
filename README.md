@@ -75,13 +75,22 @@ To start using the MyFashion Frontend, follow these steps:
 - `src/components/molecules`: Small Component of pages.
 - `src/components/templates`: Template Component (navbar and footer).
 - `src/router`: Router file.
+- `src/utils`: Fetching Function.
+- `src/middleware`: Authentication using useContext.
 
 ## Dependencies
 
+- axios
+- framer-motion
 - react
 - react-dom
+- react-hook-form
 - react-icons
+- react-query
 - react-router-dom
+- sweetalert2
+- swiper
+- zod
 
 ## Usage
 
@@ -97,7 +106,15 @@ The application utilizes Styled-components for styling, ensuring a consistent an
 
 ## API Integration
 
--
+- http://localhost:8080/api/public/register
+- http://localhost:8080/api/public/login
+- http://localhost:8080/api/secured/nim
+- http://localhost:8080/api/secured/nim
+- http://localhost:8080/api/secured/logout
+- http://localhost:8080/api/secured/user
+- http://localhost:8080/api/secured/getAllCourse
+- http://localhost:8080/api/secured/getOneCourse/${id}
+- http://localhost:8080/api/secured/addMimberCourse/${id}
 
 ## Contributing
 
