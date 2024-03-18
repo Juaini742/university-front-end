@@ -1,13 +1,22 @@
 import {useState} from "react";
 import {Button} from "../atoms";
 import {RiMenu2Fill} from "react-icons/ri";
-import {Link} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
+import * as apiUtils from "../../utils";
+import {useMutation} from "react-query";
+import {useAppContext} from "../../middleware/AppContext";
 
 export const Navbar = () => {
   const [visible, setVisible] = useState(false);
+  const mutation = useMutation(apiUtils.logout);
+  const {isLoggedIn} = useAppContext();
 
   const hanldeVisible = () => {
     setVisible(!visible);
+  };
+
+  const handleLogout = () => {
+    mutation.mutate();
   };
 
   return (
@@ -24,44 +33,57 @@ export const Navbar = () => {
           >
             <ul className="flex flex-col md:flex-row gap-3 text-sm border-b-2 md:border-b-0 pb-3 md:pb-0">
               <li>
-                <Link to="/">
+                <NavLink to="/">
                   <Button variant="navbar" className="py-2 px-2">
-                    Univesity
+                    Home
                   </Button>
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link to="/about">
+                <NavLink to="/about">
                   <Button variant="navbar" className="py-2 px-2">
                     About
                   </Button>
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link to="/news">
+                <NavLink to="/news">
                   <Button variant="navbar" className="py-2 px-2">
                     News
                   </Button>
-                </Link>
+                </NavLink>
               </li>
-              <li>
-                <Link to="">
-                  <Button variant="navbar" className="py-2 px-2">
-                    Community
+              {isLoggedIn === true ? (
+                <li>
+                  <NavLink to="/course">
+                    <Button variant="navbar" className="py-2 px-2">
+                      Course
+                    </Button>
+                  </NavLink>
+                </li>
+              ) : (
+                ""
+              )}
+            </ul>
+            {isLoggedIn === true ? (
+              <div className="ml-3 mt-5 md:mt-0 text-sm">
+                <Button
+                  onClick={handleLogout}
+                  variant="white"
+                  className="px-4 py-2"
+                >
+                  Logout
+                </Button>
+              </div>
+            ) : (
+              <div className="ml-3 mt-5 md:mt-0 text-sm">
+                <Link to="/register">
+                  <Button variant="white" className="px-4 py-2">
+                    Register
                   </Button>
                 </Link>
-              </li>
-            </ul>
-            <div className="flex flex-col md:flex-row gap-5 text-sm">
-              <Button variant="navbar" className="py-2 px-2 uppercase">
-                Login
-              </Button>
-              <Link to="/register">
-                <Button variant="white" className="px-2 py-2">
-                  Register
-                </Button>
-              </Link>
-            </div>
+              </div>
+            )}
           </div>
           <div className="flex md:hidden">
             <Button

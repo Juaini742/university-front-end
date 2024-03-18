@@ -1,39 +1,43 @@
 import {SubmitHandler, useForm} from "react-hook-form";
 import {Button, Paragraph} from "../atoms";
-import {FaFacebook} from "react-icons/fa";
-import {FcGoogle} from "react-icons/fc";
-import {Link, useNavigate} from "react-router-dom";
+import {Link} from "react-router-dom";
 import {zodResolver} from "@hookform/resolvers/zod";
-import {FormFields, schema} from "../../contents";
-import {useMutation} from "react-query";
-import * as apiUtils from "../../utils";
-import Swal from "sweetalert2";
+import {FormFieldsLogin, schema} from "../../contents";
 
-export const RegisterScreen = () => {
-  const navigate = useNavigate();
+export const LoginScreen = () => {
   const {
     register,
     handleSubmit,
     setError,
     formState: {errors, isSubmitting},
-  } = useForm<FormFields>({
+  } = useForm<FormFieldsLogin>({
     resolver: zodResolver(schema),
   });
 
-  const mutation = useMutation(apiUtils.register, {
-    onError: () => {
+  // const onSubmit = handleSubmit((data) => {
+  //   try {
+  //     alert("asdkj");
+  //     console.log(data);
+  //   } catch (error) {
+  //     setError("root", {
+  //       message: "There is something wrong",
+  //     });
+  //   }
+  // });
+
+  const hanldeSubmit: SubmitHandler<FormFieldsLogin> = async () => {
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      // mutation.mutate(data);
+      // Swal.fire("Registration succesfully!").then(() => {
+      //   navigate("/login");
+      // });
+      alert("asdkj");
+    } catch (error) {
       setError("root", {
         message: "This email is already taken",
       });
-    },
-  });
-
-  const hanldeSubmit: SubmitHandler<FormFields> = async (data) => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    mutation.mutate(data);
-    Swal.fire("Registration succesfully!").then(() => {
-      navigate("/login");
-    });
+    }
   };
 
   return (
@@ -43,7 +47,7 @@ export const RegisterScreen = () => {
           <img src="../images/register.svg" alt="register" />
         </div>
         <div>
-          <Paragraph variant="title">Register Form</Paragraph>
+          <Paragraph variant="title">Login Form</Paragraph>
           <p className="text-[11px] text-center mt-3">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit
             praesentium sunt neque atque unde omnis. Quia eum voluptates soluta
@@ -54,23 +58,11 @@ export const RegisterScreen = () => {
           onSubmit={handleSubmit(hanldeSubmit)}
           className="mt-5 w-10/12 flex flex-col gap-2"
         >
-          {errors.root && (
-            <span className="text-[10px] text-red-600 text-center">
+          {/* {errors.root && (
+            <span className="text-[10px] text-red-600">
               {errors.root?.message}
             </span>
-          )}
-          <div className="flex flex-col gap-1">
-            <label htmlFor="username" className="text-sm font-prociono">
-              Username
-            </label>
-            <input
-              {...register("username")}
-              type="text"
-              id="username"
-              className="border border-black h-10 pl-4 text-sm font-prociono"
-              required
-            />
-          </div>
+          )} */}
           <div className="flex flex-col gap-1">
             <label htmlFor="emial" className="text-sm font-prociono">
               Email
@@ -105,12 +97,11 @@ export const RegisterScreen = () => {
               </span>
             )}
           </div>
-
           <div>
             <span className="text-[10px]">
-              Already have account{" "}
-              <Link to="/login" className="text-red-600">
-                login here
+              Dont't have account{" "}
+              <Link to="/register" className="text-red-600">
+                register here
               </Link>
             </span>
             <Button
@@ -118,24 +109,10 @@ export const RegisterScreen = () => {
               variant="secondary"
               className="w-full py-2 text-sm"
             >
-              {isSubmitting ? "Loading..." : "Register"}
+              {isSubmitting ? "Loading..." : "Login"}
             </Button>
           </div>
         </form>
-        <div className="flex gap-5 mt-5">
-          <Button className="bg-blue-500 flex items-center gap-2 py-1 pl-1 pr-2 rounded-md">
-            <span className="bg-white p-1 rounded-sm">
-              <FcGoogle />
-            </span>
-            <p className="text-[10px] text-white">Sign in with Google</p>
-          </Button>
-          <Button className="bg-blue-800 flex items-center gap-2 py-1 pl-1 pr-2 rounded-md">
-            <span className="bg-white p-1 rounded-sm">
-              <FaFacebook />
-            </span>
-            <p className="text-[10px] text-white">Sign in with Facebook</p>
-          </Button>
-        </div>
       </div>
     </section>
   );

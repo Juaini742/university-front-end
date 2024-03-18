@@ -1,4 +1,18 @@
-import {FaFacebook, FaInstagram, FaGoogle, FaTwitter} from "react-icons/fa";
+import {
+  FaFacebook,
+  FaInstagram,
+  FaGoogle,
+  FaTwitter,
+  FaCode,
+  FaChartLine,
+  FaPalette,
+  FaBullhorn,
+  FaRegFileAlt,
+  FaShieldAlt,
+  FaProjectDiagram,
+  FaCommentDots,
+  FaCloud,
+} from "react-icons/fa";
 export const extracurriculars = [
   {
     img: "../images/activity2.jpg",
@@ -86,5 +100,140 @@ export const news = [
     img: "../images/activity2.jpg",
     title: "Discovering Everyday Life Inspirations: A Guide to Personal Growth",
     slug: "uncovering inspirations in everyday life a comprehensive guide to personal growth and self-discovery",
+  },
+];
+
+export const courses = [
+  {
+    id: 1,
+    img: "../images/computer.jpg",
+    vidio: 25,
+    rating: 4,
+    title: "Supervised Machine Learning: Regression and Classification",
+    profile: "../images/profile.jpg",
+    name: "Muhammad Adam",
+    jop: "Front-End Developer",
+  },
+  {
+    id: 2,
+    img: "../images/computer.jpg",
+    vidio: 25,
+    rating: 4,
+    title: "Supervised Machine Learning: Regression and Classification",
+    profile: "../images/profile.jpg",
+    name: "Muhammad Adam",
+    jop: "Front-End Developer",
+  },
+  {
+    id: 3,
+    img: "../images/computer.jpg",
+    vidio: 25,
+    rating: 4,
+    title: "Supervised Machine Learning: Regression and Classification",
+    profile: "../images/profile.jpg",
+    name: "Muhammad Adam",
+    jop: "Front-End Developer",
+  },
+  {
+    id: 4,
+    img: "../images/computer.jpg",
+    vidio: 25,
+    rating: 4,
+    title: "Supervised Machine Learning: Regression and Classification",
+    profile: "../images/profile.jpg",
+    name: "Muhammad Adam",
+    jop: "Front-End Developer",
+  },
+  {
+    id: 5,
+    img: "../images/computer.jpg",
+    vidio: 25,
+    rating: 4,
+    title: "Supervised Machine Learning: Regression and Classification",
+    profile: "../images/profile.jpg",
+    name: "Muhammad Adam",
+    jop: "Front-End Developer",
+  },
+  {
+    id: 6,
+    img: "../images/computer.jpg",
+    vidio: 25,
+    rating: 4,
+    title: "Supervised Machine Learning: Regression and Classification",
+    profile: "../images/profile.jpg",
+    name: "Muhammad Adam",
+    jop: "Front-End Developer",
+  },
+];
+
+export const testimonial = [
+  {
+    img: "../images/profile.jpg",
+    name: "Muhammad Adam",
+    desk: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error minus eius odit nisi veniam esse labore deserunt. Ipsa, architecto provident.",
+    rating: 4,
+  },
+  {
+    img: "../images/profile.jpg",
+    name: "Muhammad Adam",
+    desk: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error minus eius odit nisi veniam esse labore deserunt. Ipsa, architecto provident.",
+    rating: 4,
+  },
+  {
+    img: "../images/profile.jpg",
+    name: "Muhammad Adam",
+    desk: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error minus eius odit nisi veniam esse labore deserunt. Ipsa, architecto provident.",
+    rating: 4,
+  },
+  {
+    img: "../images/profile.jpg",
+    name: "Muhammad Adam",
+    desk: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error minus eius odit nisi veniam esse labore deserunt. Ipsa, architecto provident.",
+    rating: 4,
+  },
+  {
+    img: "../images/profile.jpg",
+    name: "Muhammad Adam",
+    desk: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error minus eius odit nisi veniam esse labore deserunt. Ipsa, architecto provident.",
+    rating: 4,
+  },
+];
+
+export const categories = [
+  {
+    name: "Programming",
+    icon: <FaCode />,
+  },
+  {
+    name: "Data Analysis",
+    icon: <FaChartLine />,
+  },
+  {
+    name: "Web Design",
+    icon: <FaPalette />,
+  },
+  {
+    name: "Digital Marketing",
+    icon: <FaBullhorn />,
+  },
+  {
+    name: "Content Creation",
+    icon: <FaRegFileAlt />,
+  },
+  {
+    name: "Cybersecurity",
+    icon: <FaShieldAlt />,
+  },
+  {
+    name: "Project Management",
+    icon: <FaProjectDiagram />,
+  },
+  {
+    name: "Communication Skills",
+    icon: <FaCommentDots />,
+  },
+  {
+    name: "Cloud Computing",
+    icon: <FaCloud />,
   },
 ];

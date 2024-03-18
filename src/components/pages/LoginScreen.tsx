@@ -1,36 +1,31 @@
-import {SubmitHandler, useForm} from "react-hook-form";
+import {useForm} from "react-hook-form";
 import {Button, Paragraph} from "../atoms";
 import {Link} from "react-router-dom";
-import {z} from "zod";
-import {zodResolver} from "@hookform/resolvers/zod";
-
-type FormFields = z.infer<typeof schema>;
-
-const schema = z.object({
-  email: z.string().email(),
-  password: z.string().min(8),
-});
+import {FormFieldsLogin} from "../../contents";
+import {useMutation} from "react-query";
+import {login} from "../../utils";
 
 export const LoginScreen = () => {
   const {
     register,
+    formState: {errors},
     handleSubmit,
     setError,
-    formState: {errors, isSubmitting},
-  } = useForm<FormFields>({
-    resolver: zodResolver(schema),
+  } = useForm<FormFieldsLogin>();
+  const mutation = useMutation((data: FormFieldsLogin) => login(data), {
+    onError: () => {
+      setError("root", {
+        message: "Something went wrong, please try again",
+      });
+    },
   });
 
-  const hanldeSubmit: SubmitHandler<FormFields> = async (data) => {
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      console.log(data);
-    } catch (error) {
-      setError("root", {
-        message: "There is something wrong",
-      });
+  const onSubmit = handleSubmit(async (data) => {
+    await mutation.mutate(data);
+    if (mutation.isSuccess) {
+      await login(data);
     }
-  };
+  });
 
   return (
     <section className="h-screen flex justify-center items-center">
@@ -46,12 +41,9 @@ export const LoginScreen = () => {
             nisi mollitia.
           </p>
         </div>
-        <form
-          onSubmit={handleSubmit(hanldeSubmit)}
-          className="mt-5 w-10/12 flex flex-col gap-2"
-        >
+        <form onSubmit={onSubmit} className="mt-5 w-10/12 flex flex-col gap-2">
           {errors.root && (
-            <span className="text-[10px] text-red-600">
+            <span className="text-[10px] text-red-600 text-center">
               {errors.root?.message}
             </span>
           )}
@@ -91,14 +83,13 @@ export const LoginScreen = () => {
           </div>
           <div>
             <span className="text-[10px]">
-              Dont't have account <Link to="/register">register here</Link>
+              Dont't have account{" "}
+              <Link to="/register" className="text-red-600">
+                register here
+              </Link>
             </span>
-            <Button
-              disabled={isSubmitting}
-              variant="secondary"
-              className="w-full py-2 text-sm"
-            >
-              {isSubmitting ? "Loading..." : "Login"}
+            <Button variant="secondary" className="w-full py-2 text-sm">
+              Login
             </Button>
           </div>
         </form>

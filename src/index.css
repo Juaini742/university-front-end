@@ -24,6 +24,10 @@ body {
   @apply rounded-lg hover:bg-yellow-600/30 trans-300;
 }
 
+.active {
+  @apply rounded-lg bg-yellow-600/30 py-2 px-2;
+}
+
 .btn-white {
   @apply rounded-lg bg-white hover:bg-yellow-600 hover:text-white uppercase trans-300;
 }
